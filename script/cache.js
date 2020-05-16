@@ -171,10 +171,6 @@ resources.load([
 
   "./images/yellowCube.png",
 
-  "./images/final_castle.png",
-
-  "./images/finalcastle2.png",
-
   "./images/yellowCube2.png",
 
   "./images/small-cloud.png",
