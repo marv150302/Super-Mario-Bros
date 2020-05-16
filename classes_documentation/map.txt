@@ -1,0 +1,21 @@
+load() : load all map
+
+loadPole() : load the winning ending pole
+
+loadCloud() : load all game clouds
+
+loadTube() : loadtubes on the map
+
+loadGround() : load the ground
+
+loadBush() : load all the bushes on the game
+
+loadStair() : load all stairs in the game
+
+camera() : move every item if the camera moves
+
+delete(): delete all offscreen items
+
+nextLevel(): load next level if mario wins
+
+reload() : not used in game

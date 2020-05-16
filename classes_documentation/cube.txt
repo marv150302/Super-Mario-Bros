@@ -1,0 +1,13 @@
+load(): load all cubes on the map
+
+push(): push all cube on the map
+
+changeColor(): costantly change color of the cubes on the map
+
+camera(): costantly move the cube position as the camera moves
+
+spwan(): spawn an item if there is a bottomCollision with mario
+
+bounce(): cube bounce animation
+
+reload(): *not used in game for now

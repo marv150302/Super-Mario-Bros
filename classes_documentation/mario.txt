@@ -1,0 +1,13 @@
+draw(no_parameters) : draws mario on his personal canvas
+
+setForm(size,power,height): sets mario form
+
+update(dt,move) : dt is the time that passed on every canvas drawing
+
+                  costantly update mario
+                  
+steps() : costantly change mario steps if mario is moving
+
+death() : play mario death animation if mario is dying
+
+win() : play mario win animation if mario wins

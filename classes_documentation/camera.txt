@@ -1,0 +1,3 @@
+draw() : for drawing the camera x axis
+
+collision() : for mario collision with the camera

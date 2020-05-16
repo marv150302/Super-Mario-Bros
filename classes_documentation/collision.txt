@@ -1,0 +1,21 @@
+bottomCollision() : mario collision with the bottom of cubes
+
+item_push() : push an item if mario collides with a bottom of a cube
+
+topCollision(): mario top collision with all elements on the map
+
+leftCollision(): mario left collision with all elements on the map
+
+rightCollision(): mario right collision with all elements on the map
+
+enemy_object_collisions(): enemy can collide with elements on the map
+
+mario_collision_with_enemy(): mario can collide with enemies on the map
+
+itemCollision(): mario can collide with item spawned on the map
+
+map_holes(): mario can fall in a hole in a map
+
+poleCollision(): if mario touches the pole mario has won the game
+
+collision(): "main" that runs all collisions costantly

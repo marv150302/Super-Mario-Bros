@@ -1,0 +1,9 @@
+push() : push an item if there is a bottom collision
+
+bounce() : item bounce animation
+
+camera() : item camera animation
+
+delete() : delete offscreen items
+
+reload() : not used in game

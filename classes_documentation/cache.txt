@@ -1,0 +1,1 @@
+this is made for storing all images inside an array

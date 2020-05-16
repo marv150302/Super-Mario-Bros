@@ -1,0 +1,3 @@
+game_loop() : for joystick input
+
+mario.input() : for mario input

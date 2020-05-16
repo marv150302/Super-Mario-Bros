@@ -1,0 +1,7 @@
+loadMap(): load the game map
+
+animate(): animate all elements on the map if the camera moves
+
+update(): costantly update elements on the map
+
+render(): draw everything on the map
