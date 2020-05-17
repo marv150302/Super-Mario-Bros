@@ -51,11 +51,11 @@ var Mario = function (ctx) {
 
   this.jump.volume = 0.2;
 
-  this.power = "Fire";
+  this.power = "normal";
 
   this.state = "idle";
 
-  this.size = "big";
+  this.size = "small";
 
   this.game_life = 3;
 
@@ -65,7 +65,7 @@ var Mario = function (ctx) {
 
   this.time = 0;
 
-  this.life = 3;
+  this.life = 1;
 
   this.fireBall = [];
 
