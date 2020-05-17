@@ -798,13 +798,17 @@ function collision(dt) {
 
   itemObjectCollision()
 
-  //mario_collision_with_enemy()//checking if mario touches a monster without jumping
+  mario_collision_with_enemy()//checking if mario touches a monster without jumping
 
   monsterObjectCollision()//all monster collision with object
 
   poleCollision();//mario collision with pole
 
+  //
+
   //mario collisions with objects on the map
+
+  //
 
   fireBallCollision()//mario fireball can collide with entity such as tube or cube
 
