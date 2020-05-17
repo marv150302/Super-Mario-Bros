@@ -137,6 +137,10 @@ Mario.prototype.setForm = function (size,power,height) {
 }
 
 Mario.prototype.update = function (dt,move) {
+
+  //console.log(Math.round((this.vx + Number.EPSILON) * 100) / 100);
+
+
   if (dt < 4) {
 
     setCookie("mario top score",this.top_score,5)
@@ -237,7 +241,11 @@ Mario.prototype.update = function (dt,move) {
 
     this.updateFireBall(dt);
 
-    !this.finish_level ? this.gravity = 17 : this.gravity = 10;
+    /*if (Math.round((this.vx + Number.EPSILON) * 100) / 100 > 0.14) {
+
+      animate(dt)
+
+    }*/
 
   }
 
@@ -423,11 +431,11 @@ Mario.prototype.death = function () {
 
     this.y += this.death_animation.cycleloop[this.death_animation.step_index];
 
-    levels[WORLD][AREA].main_theme.pause();
+    canvas.game.audio.main_theme.pause();
 
       if (this.death_animation.step_index==2) {
 
-        if (canvas.game.life) {
+        if (canvas.game.life > 0  ) {
 
           if (!this.once) {
 

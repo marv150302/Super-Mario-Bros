@@ -13,6 +13,8 @@ var Item = function (ctx) {
 
 Item.prototype.push = function (x,y,url,type,static) {
 
+  this.entity = []
+
   this.entity.push({
 
     x: Math.round(x),

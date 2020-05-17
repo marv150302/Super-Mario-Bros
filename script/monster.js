@@ -22,9 +22,10 @@ Monster.prototype.load = function () {
 
   levels[WORLD][AREA].monster.forEach((item, i) => {
 
-    canvas.game.audio.goomba_death_sound[i] = new Audio("./sound/monster_death.mov");
+    canvas.game.audio.goomba_death_sound.push(new Audio("./sound/monster_death.mov"))
 
-    canvas.game.audio.damage_to_mario[i] = new Audio("./sound/damage.mp3")
+    canvas.game.audio.damage_to_mario.push(new Audio("./sound/damage.mp3"))
+
 
     this.entity.push({
 
@@ -63,12 +64,6 @@ Monster.prototype.load = function () {
       velocity : -50,
 
       collide : false,
-
-      death_sound : new Audio("./sound/monster_death.mov"),
-
-      damage_to_mario : new Audio("./sound/damage.mp3"),
-
-      voice : item[3]=="bowser" ? new Audio("./sound/bowser.mp3") : undefined,
 
       id : i,
 
@@ -112,6 +107,10 @@ Monster.prototype.load = function () {
 
     if (levels[WORLD][AREA].tubePosition[i][3]) {
 
+      canvas.game.audio.goomba_death_sound.push(new Audio("./sound/monster_death.mov"))
+
+      canvas.game.audio.damage_to_mario.push(new Audio("./sound/damage.mp3"))
+
       this.entity.push({
 
         x :  levels[WORLD][AREA].tubePosition[i][0]+6,
@@ -127,10 +126,6 @@ Monster.prototype.load = function () {
         width : 16,
 
         height : 16,
-
-        damage_to_mario : new Audio("./sound/damage.mp3"),
-
-        death_sound : new Audio("./sound/monster_death.mov"),
 
         animation : {
 
@@ -183,8 +178,6 @@ Monster.prototype.bullet = function () {
             width :32,
 
             height : 28,
-
-            damage_to_mario : new Audio("./sound/damage.mp3"),
 
           })
 

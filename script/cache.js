@@ -173,7 +173,6 @@ resources.load([
 
   "./images/yellowCube.png",
 
-
   "./images/yellowCube2.png",
 
   "./images/small-cloud.png",

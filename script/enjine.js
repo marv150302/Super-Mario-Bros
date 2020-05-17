@@ -28,9 +28,9 @@ function setDivs(id) {
 
 function loadMap() {
 
-  item.entity = []
-
   canvas.game.audio.main_theme.src = levels[WORLD][AREA].main_theme.src;
+
+  canvas.game.audio.mario_jump.volume = 0.2
 
   menu.data()
 
@@ -220,11 +220,13 @@ function handleGame(dt) {
 
   mario.death();//animate mario death
 
+  mario.draw();//then we draw mario
+
 }
 
 function render(dt) {
 
-  mario.draw();//then we draw mario
+
 
   monster.bullet()//in case there area some bullet we need to spawn them
 
