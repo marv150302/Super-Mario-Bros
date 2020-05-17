@@ -135,7 +135,7 @@ function update(dt) {
 
     monster.update(dt,camera.speed)
 
-    cube.update();//we change the cube color
+    cube.update(dt);//we change the cube color
 
     map.update(dt);
 

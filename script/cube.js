@@ -80,8 +80,9 @@ Cube.prototype.load = function () {
 
 //the index is the index of the cube on the map
 
-Cube.prototype.update = function () {
+Cube.prototype.update = function (dt) {
 
+  cube.bounce(dt)
 
   this.entity.forEach((item, _index) => {
 

@@ -132,7 +132,7 @@ Menu.prototype.set = function () {
 
   let pause_menu = this.loadDiv("pause_menu")
 
-  let pause_menu_text = this.loadP("pause_menu_text"," -> continue game")
+  let pause_menu_text = this.loadP("pause_menu_text","pause")
 
   pause_menu.appendChild(pause_menu_text)
 

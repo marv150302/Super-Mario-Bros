@@ -29,6 +29,8 @@ resources.load([
 
   "./images/2_score.png",
 
+  "./images/fire_death_goomba.png",
+
   "./images/moving-platform.png",
 
   "./images/bowserAttack.png",
@@ -170,6 +172,10 @@ resources.load([
   "./images/marioPhase/crouch-Right-Fire-big.png",
 
   "./images/yellowCube.png",
+
+  "./images/final_castle.png",
+
+  "./images/finalcastle2.png",
 
   "./images/yellowCube2.png",
 

@@ -38,7 +38,7 @@ div{
 
    max-height:100%;
 
-   overflow:hidden;
+   overflow:auto;
 
 }
 
@@ -188,5 +188,14 @@ img{
   margin-left: 50px;
 
   border : 2px solid black;
+
+}
+#pause_menu_text{
+
+  text-align: center;
+
+  line-height: 100px;
+
+  height: 100px;
 
 }

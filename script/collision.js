@@ -12,7 +12,7 @@ function loadEntity() {
 
 function bottomCollision(dt) {
 
-  cube.bounce(dt)
+
 
   for (var i = 0; i < entities.length; i++) {
 
@@ -211,9 +211,11 @@ function monster_top_collision(index) {
 
         let height = monster.entity[index].height;
 
+        let fire_death = monster.entity[index].fire_death
 
 
-        if (type!="flower_monster" && type!="bullet" && type != "flyingKoopa" && type!="flyingRedKoopa" && type!="bowser" && type!="bowserRight" && !monster.entity[index].dead) {
+
+        if (type!="flower_monster" && type!="bullet" && type != "flyingKoopa" && type!="flyingRedKoopa" && type!="bowser" && type!="bowserRight" && !monster.entity[index].dead && !fire_death) {
 
           if (x < canvas.width) {
 
@@ -453,11 +455,11 @@ function mario_collision_with_enemy() {
 
   for (let j = 0,length=monster.entity.length; j < length; j++) {
 
-    if (monster.dead_animation(j)) {
+    /*if (monster.dead_animation(j)) {
 
       return
 
-    }
+    }*/
 
       let x = monster.entity[j].x
 
@@ -716,14 +718,6 @@ function fireBallCollision() {
 
             if (item.x + item.width > x && item.x < width && item.y < height && item.y + item.height > y) {
 
-              if (name=="koopa" || name=="goomba") {
-
-                monster.entity[j].death_sound.play();
-
-                monster.entity[j].type!="koopa" ? monster.entity[j].dead = true : monster.entity[j].move = false
-
-              }
-
               mario.fireBall.splice(k,1);
 
               return;
@@ -755,21 +749,24 @@ function fireBallCollision() {
 
         monster.entity[i].death_sound.play();
 
-        if (monster.entity[i].name!="flower_monster" ) {
+        if (monster.entity[i].type!="flower_monster" ) {
 
           if (!monster.entity[i].dead) {
 
-            monster.entity[i].dead = true;
+            mario.fireBall.splice(index,1);
 
-            monster.entity.splice(i,1);
+            //monster.entity[i].dead = true;
+            monster.entity[i].url = "./images/fire_death_goomba.png",
+
+            monster.entity[i].fire_death = true;
 
           }
 
         }
 
-        monster.entity[i].type!="koopa" ? monster.entity[i].dead = true : monster.entity[i].move = false
+        //monster.entity[i].type!="koopa" ? monster.entity[i].dead = true : monster.entity[i].move = false
 
-        mario.fireBall.splice(index,1);
+
 
         return;
 

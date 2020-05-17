@@ -38,6 +38,8 @@ Monster.prototype.load = function () {
 
       old_y : item[1],
 
+      fire_death : false,
+
       url : item[2],
 
       dir : mario.face,
@@ -210,6 +212,14 @@ Monster.prototype.update = function (dt,speed) {
 
     for (var i = 0; i < this.entity.length; i++) {
 
+      if (this.entity[i].fire_death) {
+
+        this.entity[i].ground = 24*16
+
+      }
+
+      monster.dead_animation(i)
+
       //this.entity[i].old_y = this.entity[i].y;
 
       if (this.entity[i].url == "./images/koopaShield.png") {
@@ -218,7 +228,7 @@ Monster.prototype.update = function (dt,speed) {
 
       }
 
-      if (!monster_top_collision(i) && this.entity[i].url != "./images/koopaShield.png") {
+      if (!monster_top_collision(i)) {
 
         this.entity[i].ground = 24*16
 
