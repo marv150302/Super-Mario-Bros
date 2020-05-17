@@ -15,7 +15,7 @@ var death_canvas = loadCanvas("death_canvas",352*2,784,2);//death layer to show 
 menu.set()// we set the menu output
 
 menu.data()
-
+//console.log(canvas.game.audio);
 function setDivs(id) {
 
   let object = document.createElement("div");
@@ -29,6 +29,8 @@ function setDivs(id) {
 function loadMap() {
 
   item.entity = []
+
+  canvas.game.audio.main_theme.src = levels[WORLD][AREA].main_theme.src;
 
   menu.data()
 
@@ -44,9 +46,9 @@ function loadMap() {
 
   loadEntity();
 
-  mario.draw()
-
   mario.y = levels[WORLD][AREA].mario_position.y;
+
+  mario.draw()
 
   return true;
 
@@ -144,7 +146,85 @@ function update(dt) {
   }
 
 }
+
+function pauseAudio() {
+
+  if (!canvas.game.audio.pause_once) {
+
+    canvas.game.audio.pause_once = true
+
+    canvas.game.audio.main_theme.pause();
+
+    for (var i = 0; i < canvas.game.audio.goomba_death_sound.length; i++) {
+
+      canvas.game.audio.goomba_death_sound[i].pause()
+
+      canvas.game.audio.damage_to_mario[i].pause()
+
+    }
+
+    canvas.game.audio.bowser_voice.pause()
+
+    canvas.game.audio.coin_sound.pause()
+
+    canvas.game.audio.item_sound.pause()
+
+    canvas.game.audio.mario_jump.pause()
+
+    canvas.game.audio.mario_death.pause()
+
+    canvas.game.audio.star_sound.pause()
+
+    canvas.game.audio.pole_sound.pause()
+
+    canvas.game.audio.cube_break_sound.pause()
+
+    canvas.game.audio.cube_bump_sound.pause()
+
+  }
+
+}
+
+function handleGame(dt) {
+
+  if (mario.life <= 0) {//check if mario is dead
+
+    canvas.game.play = false
+
+  }
+
+  if (canvas.game.play) {
+
+    canvas.game.audio.pause_once = false
+
+    if (mario.power!="Star") {
+
+      canvas.game.audio.main_theme.play();
+
+    }
+    canvas.game.audio.main_theme.volume = 0.2
+
+    $("#pause_menu").hide();
+
+    update(dt)
+
+    menu.data()//we costantly change mario data
+
+  }else{
+
+    pauseAudio()//we need to pause the game
+
+  }
+
+  mario.win()
+
+  mario.death();//animate mario death
+
+}
+
 function render(dt) {
+
+  mario.draw();//then we draw mario
 
   monster.bullet()//in case there area some bullet we need to spawn them
 

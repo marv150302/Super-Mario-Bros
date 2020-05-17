@@ -34,6 +34,10 @@ var canvas = {
 
   game : {
 
+    lastime : 0,
+
+    now : 0,
+
     play: false,
 
     time : 400,
@@ -82,11 +86,43 @@ var canvas = {
 
     life : 3,
 
+    audio : {
+
+      pause_once : false,
+
+      main_theme : new Audio(),
+
+      goomba_death_sound : new Array(),
+
+      damage_to_mario : new Array(),
+
+      bowser_voice : new Audio("./sound/bowser.mp3"),
+
+      coin_sound : new Audio("./sound/coin.mov"),
+
+      item_sound : new Audio("./sound/item.mov"),
+
+      mario_jump : new Audio("./sound/jump.mov"),
+
+      mario_death : new Audio("./sound/death.mp3"),
+
+      star_sound : new Audio("./sound/star.mov"),
+
+      pole_sound : new Audio("./sound/win.mp3"),
+
+      cube_break_sound : new Audio("./sound/breakblock.wav"),
+
+      cube_bump_sound : new Audio("./sound/bump.wav"),
+
+      pause_sound : new Audio("./sound/pause_menu.mp3")
+
+
+
+    }
+
   }
 
 };
-
-//we allow the user to select the fps;
 
 var requestAnimationFrame = function(callback) {
 

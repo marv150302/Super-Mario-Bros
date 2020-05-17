@@ -28,7 +28,7 @@ Mario.prototype.input = function (dt,move) {
 
       this.isJumping = true
 
-      this.jump.play();
+      canvas.game.audio.mario_jump.play();
 
     }
   }
@@ -118,6 +118,12 @@ document.addEventListener("keydown",function (e) {
 
     canvas.game.play = !canvas.game.play;
   }
+
+  if (e.keyCode==13 && !canvas.game.play) {
+
+    $("#pause_menu").show();
+
+  }
   if (e.keyCode == 68 && !canvas.game.play) {
     //
     selector[WORLD]._index++
@@ -170,13 +176,20 @@ document.addEventListener("keydown",function (e) {
 
   }
 
-  if (e.keyCode == 13 && !canvas.game.play) {
+  if (e.keyCode == 13 ) {
 
-    let pause_audio = new Audio("./sound/pause_menu.mp3")
+    if (!canvas.game.play) {
 
-    pause_audio.play();
+      canvas.game.audio.pause_sound.play()
+
+    }else{
+
+      canvas.game.audio.pause_sound.currentTime = 0.0
+
+    }
 
   }
+
 })
 document.addEventListener("keyup",function (e) {
 

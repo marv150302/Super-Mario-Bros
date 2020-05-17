@@ -369,7 +369,7 @@ Map.prototype.camera = function (dt,speed) {
 
 Map.prototype.nextLevel = function () {
 
-  levels[WORLD][AREA].main_theme.pause()
+  canvas.game.audio.main_theme.pause()
 
   let length = selector[WORLD].levels.length
 
@@ -411,7 +411,7 @@ Map.prototype.reload = function (ctx) {
 
   canvas.game.death_screen(death_canvas,true,canvas.game.life)
 
-  levels[WORLD][AREA].main_theme.currentTime = 0;
+  canvas.game.audio.main_theme.currentTime = 0;
 
   setTimeout(function () {
 
@@ -422,8 +422,6 @@ Map.prototype.reload = function (ctx) {
     }else{
 
       mario = new Mario(ctx)
-
-      mario.life = canvas.game.life;
 
       loadMap()
 

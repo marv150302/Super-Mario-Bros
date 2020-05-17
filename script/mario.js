@@ -1,4 +1,3 @@
-
 var Mario = function (ctx) {
 
   this.ctx = ctx;
@@ -27,6 +26,8 @@ var Mario = function (ctx) {
 
   this.friction = 0.95
 
+  this.play_star_sound_once = false
+
   this.vx = 0;
 
   this.vy = 0;
@@ -42,14 +43,6 @@ var Mario = function (ctx) {
   this.gravity = 17;
 
   this.coin = 0;
-
-  this.jump = new Audio("./sound/jump.mov");
-
-  this.death_sound = new Audio("./sound/death.mp3");
-
-  this.star_sound = new Audio("./sound/star.mov")
-
-  this.jump.volume = 0.2;
 
   this.power = "normal";
 
@@ -207,48 +200,38 @@ Mario.prototype.update = function (dt,move) {
 
     this.steps()
 
-    if (mario.state=="crouch" && mario.size=="small") {
+    if (this.state=="crouch" && this.size=="small") {
 
-      mario.state = "idle"
+      this.state = "idle"
 
     }
-    if (mario.life>0 ) {
+    if (this.life>0 ) {
 
       this.url = "./images/marioPhase/"+this.state+"-"+this.face+"-"+this.power+"-"+this.size+this.step+".png";
 
     }
 
-    if (mario.power=="Star") {
+    if (this.power=="Star") {
 
-      mario.vulnerability = true;
+      this.vulnerability = true;
 
-      if (this.star_timer) {
+      canvas.game.audio.main_theme.pause();
 
-        levels[WORLD][AREA].main_theme.pause();
+      if (canvas.game.audio.star_sound.currentTime == canvas.game.audio.star_sound.duration) {
 
-        this.star_sound.play();
+        this.vulnerability = false;
 
-        this.star_timer = false
+        canvas.game.audio.main_theme.play();
 
-        setTimeout(function () {
+        this.setForm("big","normal",32);
 
-          mario.vulnerability = false;
+        this.play_star_sound_once = false
 
-          levels[WORLD][AREA].main_theme.play();
+      }else{
 
-          if (mario.power=="Star") {
-
-            mario.setForm("big","normal",32);
-
-          }
-
-        }, this.star_sound.duration*1000);
+        canvas.game.audio.star_sound.play();
 
       }
-
-    }else{
-
-      this.star_timer = true;
 
     }
 
@@ -286,9 +269,9 @@ Mario.prototype.input = function (dt,move) {
 
     this.face = "Right"
 
-    mario.x + mario.width>=camera.axis && !this.complete_level ? animate(dt) : false//animate only if mario is at the middle of the screen
+    this.x + this.width>=camera.axis && !this.complete_level ? animate(dt) : false//animate only if mario is at the middle of the screen
   }
-  if (this.key[40] && this.pressKey && mario.size!="small") {
+  if (this.key[40] && this.pressKey && this.size!="small") {
 
     this.state = "crouch"
 
@@ -308,7 +291,7 @@ Mario.prototype.input = function (dt,move) {
 
       this.isJumping = true
 
-      this.jump.play();
+      canvas.game.audio.mario_jump.play();
 
     }
   }
@@ -325,7 +308,7 @@ Mario.prototype.input = function (dt,move) {
 
     this.face=="Right" ? this.vx+= 30*dt : this.vx-= 30*dt//if
 
-    if (this.face=="Right" && mario.complete_level) {
+    if (this.face=="Right" && this.complete_level) {
 
       this.vx += 60*dt
 
@@ -333,7 +316,7 @@ Mario.prototype.input = function (dt,move) {
 
     this.face=="Right" ? camera.speed=200 : null
 
-    mario.x + mario.width>=camera.axis && !this.complete_level ? animate(dt) : false
+    this.x + this.width>=camera.axis && !this.complete_level ? animate(dt) : false
   }
 }
 
@@ -341,9 +324,9 @@ Mario.prototype.pushFireball = function () {
 
   this.fireBall.push({
 
-    x : mario.face=="Right" ? mario.x+20 : mario.x-20,
+    x : this.face=="Right" ? this.x+20 : this.x-20,
 
-    y : mario.y + 16,
+    y : this.y + 16,
 
     width : 10,
 
@@ -359,7 +342,7 @@ Mario.prototype.pushFireball = function () {
 
     play : true,
 
-    dir : mario.face=="Right" ? true : false
+    dir : this.face=="Right" ? true : false
 
   })
 
@@ -448,7 +431,7 @@ Mario.prototype.death = function () {
 
           if (!this.once) {
 
-            this.death_sound.play()
+            canvas.game.audio.mario_death.play()
 
             this.once = true
 
@@ -458,7 +441,7 @@ Mario.prototype.death = function () {
 
             map.reload(mario.ctx)
 
-          }, (parseInt(this.death_sound.duration*1000))-1000)
+          }, (parseInt(canvas.game.audio.mario_death*1000))-1000)
 
           }
         }
@@ -504,7 +487,7 @@ Mario.prototype.win = function () {
 
   if (this.complete_level) {
 
-    levels[WORLD][AREA].main_theme.currentTime = 0;
+    canvas.game.audio.main_theme.currentTime = 0;
 
     let pole_position = [];
 
@@ -524,11 +507,11 @@ Mario.prototype.win = function () {
 
       let flag_index = map.entity.map(function(e) { return e.type; }).indexOf('flag');//the flag position on the pole
 
-      map.entity[flag_index].y = mario.y;
+      map.entity[flag_index].y = this.y;
 
       this.score+=1000
 
-      map.pole_sound.play();
+      canvas.game.audio.pole_sound.play();
 
       this.height = 32
 
@@ -540,25 +523,25 @@ Mario.prototype.win = function () {
 
     }else{
 
-      mario.complete_level = false
+      this.complete_level = false
 
-      mario.face = "Right"
+      this.face = "Right"
 
-      mario.power = "normal"
+      this.power = "normal"
 
-      mario.state = "moving"
+      this.state = "moving"
 
-      mario.height = 32
+      this.height = 32
 
-      mario.width = 16
+      this.width = 16
 
-      mario.size = "big"
+      this.size = "big"
 
-      mario.key[90] = true;
+      this.key[90] = true;
 
-      mario.steps()
+      this.steps()
 
-      mario.url = "./images/marioPhase/"+mario.state+"-"+mario.face+"-"+mario.power+"-"+mario.size+mario.step+".png";
+      this.url = "./images/marioPhase/"+this.state+"-"+this.face+"-"+this.power+"-"+this.size+this.step+".png";
 
     }
 
@@ -566,7 +549,7 @@ Mario.prototype.win = function () {
 
 
 
-    map.pole_sound.onended=function(){
+    canvas.game.audio.pole_sound.onended=function(){
 
       mario.key[90] = false;
 
@@ -574,7 +557,7 @@ Mario.prototype.win = function () {
 
       mario.step = "";
 
-      map.pole_sound.pause();
+      canvas.game.audio.pole_sound.pause();
 
       map.nextLevel();
 

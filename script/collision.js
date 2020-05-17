@@ -48,7 +48,7 @@ function bottomCollision(dt) {
 
               if (mario.size=="big") {
 
-                cube.break_audio.play()
+                canvas.game.audio.cube_break_sound.play()
 
                 cube.cube_destruction_animation(x,y,color);
 
@@ -58,11 +58,15 @@ function bottomCollision(dt) {
 
                   cube.entity[j].bounce = true;
 
-                  cube.bump_audio.play();
+                  canvas.game.audio.cube_bump_sound.play()
 
               }
 
             }
+
+            canvas.game.audio.cube_break_sound.currentTime = 0.0
+
+            canvas.game.audio.cube_bump_sound.currentTime = 0.0
 
             return true;
 
@@ -113,7 +117,7 @@ function item_push(_index1,_index2) {
 
         item.push(x,y-16,"./images/coin.png","coin");
 
-        item.coin.play();
+        canvas.game.audio.coin_sound.play();
 
         mario.coin+=1;
 
@@ -510,9 +514,7 @@ function mario_collision_with_enemy() {
 
           //mario.score +=1000;
 
-
-
-          monster.entity[j].death_sound.play();
+          canvas.game.audio.goomba_death_sound[j].play();
 
           if (monster.entity[j].type=="goomba" || monster.entity[j].type=="koopa") {
 
@@ -540,7 +542,7 @@ function mario_collision_with_enemy() {
 
           mario.power=="normal" ? mario.setForm("small","normal",16) : mario.setForm("big","normal",32);
 
-          monster.entity[j].damage_to_mario.play();
+          canvas.game.audio.damage_to_mario[j].play();
 
             mario.life -= 1;
 
@@ -576,7 +578,7 @@ function mario_collision_with_enemy() {
 
             mario.life -= 1;
 
-            monster.entity[j].damage_to_mario.play();
+            canvas.game.audio.damage_to_mario[j].play();
 
             mario.vulnerability = true
 
@@ -618,9 +620,7 @@ function itemCollision() {
 
           }else{
 
-            //let coin_sound = new Audio("./sound/coin.mov")
-
-            item.coin.play()
+            canvas.game.audio.coin_sound.play()
 
             mario.coin++;
 
@@ -630,7 +630,7 @@ function itemCollision() {
 
           if (items.type.toLowerCase()==mario.power.toLowerCase()) {
 
-            item.item_audio.play();
+            canvas.game.audio.item_sound.play();
 
           }
 
@@ -648,7 +648,7 @@ function itemCollision() {
 
           mario.life+=1;
 
-          item.item_audio.play();
+          canvas.game.audio.item_sound.play();
 
           item.entity.splice(i,1);
 
@@ -747,7 +747,7 @@ function fireBallCollision() {
 
       if (item.x + item.width > x && item.x < width && item.y < height && item.y + item.height > y) {
 
-        monster.entity[i].death_sound.play();
+        canvas.game.audio.goomba_death_sound.play();
 
         if (monster.entity[i].type!="flower_monster" ) {
 

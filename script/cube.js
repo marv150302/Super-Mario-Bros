@@ -148,7 +148,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
               let coin_sound = new Audio("./sound/coin.mov")
 
-              coin_sound.play()
+              canvas.game.audio.coin_sound.play()
 
               break;
 
@@ -178,9 +178,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
         mario.coin+=1;
 
-        let coin_sound = new Audio("./sound/coin.mov")
-
-        coin_sound.play()
+        canvas.game.audio.coin_sound.play()
 
       }
 
@@ -190,9 +188,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
       mario.coin+=1;
 
-      let coin_sound = new Audio("./sound/coin.mov")
-
-      coin_sound.play()
+      canvas.game.audio.coin_sound.play()
 
     }
 

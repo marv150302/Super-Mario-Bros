@@ -14,11 +14,17 @@ var Monster = function () {
 
 Monster.prototype.load = function () {
 
-
-
   this.entity = []
 
+  canvas.game.audio.goomba_death_sound = [];
+
+  canvas.game.audio.damage_to_mario = []
+
   levels[WORLD][AREA].monster.forEach((item, i) => {
+
+    canvas.game.audio.goomba_death_sound[i] = new Audio("./sound/monster_death.mov");
+
+    canvas.game.audio.damage_to_mario[i] = new Audio("./sound/damage.mp3")
 
     this.entity.push({
 
@@ -224,7 +230,7 @@ Monster.prototype.update = function (dt,speed) {
 
       if (this.entity[i].url == "./images/koopaShield.png") {
 
-        this.entity[i].y = this.entity[i].old_y+1;
+        this.entity[i].y = this.entity[i].old_y+10;
 
       }
 
@@ -280,6 +286,8 @@ Monster.prototype.update = function (dt,speed) {
       if (this.entity[i].y >= this.entity[i].ground && this.entity[i].x + this.entity[i].width < canvas.width && (this.entity[i].x + this.entity[i].width) > 0 && this.entity[i].type!="bowserAttack") {
 
         this.entity[i].y = this.entity[i].ground
+
+        this.entity[i].old_y = this.entity[i].y
 
       }
 
@@ -444,9 +452,10 @@ Monster.prototype.boss_animation = function (i) {
 Monster.prototype.dead_animation = function () {
 
 
-  for (var i = 0,length = this.entity.length; i < length; i++) {
+  for (var i = 0; i < this.entity.length; i++) {
 
     if (this.entity[i].dead && this.entity[i].type!="flower_monster" &&  this.entity[i].type!="flower_monster2") {
+
 
       //the score animation when you jump on a monster
       if (!this.entity[i].score_animation) {
@@ -492,6 +501,7 @@ Monster.prototype.dead_animation = function () {
         }
 
       }
+
   }
 
   return false;
