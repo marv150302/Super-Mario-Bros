@@ -279,9 +279,17 @@ function itemTopCollision(index) {
 
           if (x < object_x + object_width && x + width > object_x && y + height > object_y  && y < object_y + object_height) {
 
-            item.entity[index].ground = (object_y - 16 - 0.0001);
+            if (entities[i][k].url=="./images/lava") {
 
-            return true
+              item.entity.splice(i,1)
+
+            }else{
+
+              item.entity[index].ground = (object_y - 16 - 0.0001);
+
+              return true
+
+            }
 
           }
 
@@ -702,7 +710,7 @@ function fireBallCollision() {
 
         let name = entities[i][j].name;
 
-        if (name=="tube" || name=="cube") {
+        if (name=="tube" || name=="cube" || name=="stair") {
 
           let x = entities[i][j].x;
 
@@ -747,7 +755,7 @@ function fireBallCollision() {
 
       if (item.x + item.width > x && item.x < width && item.y < height && item.y + item.height > y) {
 
-        canvas.game.audio.goomba_death_sound.play();
+        canvas.game.audio.goomba_death_sound[i].play();
 
         if (monster.entity[i].type!="flower_monster" ) {
 
@@ -790,7 +798,7 @@ function collision(dt) {
 
   itemObjectCollision()
 
-  mario_collision_with_enemy()//checking if mario touches a monster without jumping
+  //mario_collision_with_enemy()//checking if mario touches a monster without jumping
 
   monsterObjectCollision()//all monster collision with object
 

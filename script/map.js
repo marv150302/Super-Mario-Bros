@@ -393,7 +393,11 @@ Map.prototype.nextLevel = function () {
 
   mario.life = 2;
 
+  mario.jump_height = 35
+
   mario.x = 0;
+
+  mario.gravity = 17
 
   mario.state = "idle";
 

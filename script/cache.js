@@ -217,9 +217,9 @@ resources.load([
 
   "./images/fireBall.png",
 
-  "./images/marioPhase/throwingFire-Left-Fire-Big.png",
+  "./images/marioPhase/throwingFire-Left-Fire-big.png",
 
-  "./images/marioPhase/throwingFire-Right-Fire-Big.png",
+  "./images/marioPhase/throwingFire-Right-Fire-big.png",
 
   "./images/bullet.png",
 

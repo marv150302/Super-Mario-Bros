@@ -1,6 +1,6 @@
-var Cube = function (context) {
+var Cube = function (ctx) {
 
-  this.ctx = context
+  this.ctx = ctx
 
   this.width = 16
 
@@ -13,12 +13,6 @@ var Cube = function (context) {
   this.color = 0;
 
   this.color_loop = ["",2];//for the cube blinking
-
-  this.break_audio = new Audio("./sound/breakblock.wav")
-
-  this.item_audio = new Audio("./sound/item.mov")
-
-  this.bump_audio = new Audio("./sound/bump.wav")
 
 }
 
@@ -145,8 +139,6 @@ Cube.prototype.spawn = function (id,x,y,_index) {
               item.push(x,y-16,"./images/coin.png","coin","no_static");
 
               mario.coin+=1;
-
-              let coin_sound = new Audio("./sound/coin.mov")
 
               canvas.game.audio.coin_sound.play()
 

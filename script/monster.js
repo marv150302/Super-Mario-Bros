@@ -387,6 +387,10 @@ Monster.prototype.boss_animation = function (i) {
 
   if (random==1) {
 
+    canvas.game.audio.goomba_death_sound.push(new Audio("./sound/monster_death.mov"))
+
+    canvas.game.audio.damage_to_mario.push(new Audio("./sound/damage.mp3"))
+
     this.entity.push({
 
       x : this.entity[i].type=="bowser" ? x - 32 : x + 32,
@@ -447,7 +451,7 @@ Monster.prototype.dead_animation = function () {
 
   for (var i = 0; i < this.entity.length; i++) {
 
-    if (this.entity[i].dead && this.entity[i].type!="flower_monster" &&  this.entity[i].type!="flower_monster2") {
+    if (this.entity[i].dead && this.entity[i].type!="flower_monster" &&  this.entity[i].type!="flower_monster2" &&  this.entity[i].type!="bowserAttack") {
 
 
       //the score animation when you jump on a monster

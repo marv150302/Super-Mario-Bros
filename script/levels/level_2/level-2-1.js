@@ -70,13 +70,13 @@ level_5.loadGround([29,(110+5+11+3)*16,(20*16),"./images/ground.png",2])
 
 level_5.loadGround([18,(110+5+11+29+3)*16,(20*16 ),"./images/ground.png",2])
 
-level_5.loadGround([90,(110+5+11+29+3+18+6)*16,(20*16),"./images/ground.png",2])
+level_5.loadGround([90,(107+5+11+29+3+18+6)*16,(20*16),"./images/ground.png",2])
 
 
 
 level_5.loadCube([14*16,12*16,false,1,"./images/brick-cube.png","brown"])
 
-level_5.loadCube([29*16,9*16,false,3,"./images/brick-cube.png","brown"])
+level_5.loadCube([29*16,10*16,false,3,"./images/brick-cube.png","brown"])
 
 //"./images/yellowCube.png"
 
@@ -110,27 +110,23 @@ level_5.loadStair([33*16,((19*16)-16*1),2,"./images/brown-stair.png",])
 
 level_5.loadStair([33*16,((19*16)),2,"./images/brown-stair.png",])
 
-
-
 level_5.loadTube([43*16,16*16,"./images/tube1-2.gif",true,32,64])
 
-level_5.loadCube([55*16,9*16,false,5,"./images/brick-cube.png","brown"])
+level_5.loadCube([55*16,10*16,false,5,"./images/brick-cube.png","brown"])
 
 level_5.loadCube([55*16,12*16,false,5,"./images/brick-cube.png","brown"])
 
-level_5.loadCube([79*16,12*16,false,1,"./images/brick-cube.png","brown"])
+level_5.loadCube([81*16,14*16,false,1,"./images/brick-cube.png","brown"])
 
-level_5.loadCube([80*16,9*16,false,4,"./images/brick-cube.png","brown"])
-
-
+level_5.loadCube([83*16,12*16,false,4,"./images/brick-cube.png","brown"])
 
 level_5.loadTube([86*16,16*16,"./images/tube1-2.gif",true,32,64])
 
-level_5.loadCube([100*16,12*16,true,4,"./images/yellowCube.png"])
+level_5.loadCube([100*16,14*16,true,4,"./images/yellowCube.png"])
 
-level_5.loadCube([106*16,12*16,true,3,"./images/yellowCube.png"])
+level_5.loadCube([106*16,14*16,true,3,"./images/yellowCube.png"])
 
-level_5.loadCube([102*16,9*16,false,5,"./images/brick-cube.png","brown"])
+level_5.loadCube([102*16,10*16,false,5,"./images/brick-cube.png","brown"])
 
 level_5.loadCube([114*16,12*16,false,4,"./images/brick-cube.png","brown"])
 
@@ -146,17 +142,17 @@ level_5.loadTube([(118+5+10+2+2+5+2+2+2+2)*16,16*16,"./images/tube1-2.gif",false
 
 
 
-level_5.loadStair([182*16,((19*16)),1,"./images/brown-stair.png",])
+level_5.loadStair([179*16,((19*16)),1,"./images/brown-stair.png",])
 
-level_5.loadStair([182*16,((19*16)-16*1),1,"./images/brown-stair.png",])
+level_5.loadStair([179*16,((19*16)-16*1),1,"./images/brown-stair.png",])
 
-level_5.loadStair([182*16,((19*16)-16*2),1,"./images/brown-stair.png",])
+level_5.loadStair([179*16,((19*16)-16*2),1,"./images/brown-stair.png",])
 
-level_5.loadCube([(118+5+10+2+2+5+1+7)*16,9*16,false,4,"./images/brick-cube.png","brown"])
+level_5.loadCube([(118+5+10+2+2+5+1+7)*16,10*16,false,4,"./images/brick-cube.png","brown"])
 
-level_5.loadCube([194*16,12*16,true,1,"./images/yellowCube.png"])
+level_5.loadCube([194*16,14*16,true,1,"./images/yellowCube.png"])
 
-level_5.loadCube([196*16,9*16,false,5,"./images/brick-cube.png","brown"])
+level_5.loadCube([196*16,12*16,false,5,"./images/brick-cube.png","brown"])
 
 level_5.loadTube([(203)*16,18*16,"./images/tube1.png",true,32,32])
 
@@ -180,4 +176,8 @@ level_5.loadStair([(223-8)*16,((19*16)-16*7),2,"./images/brown-stair.png",])
 
 level_5.loadStair([(215+8)*16,((19*16)),1,"./images/brown-stair.png",])
 
-level_5.loadMonster([30*16,16*16,"./images/koopa.png","koopa",false,true,true])
+level_5.loadMonster([10*16,19*16,"./images/goomba.png","goomba",false,true,true])
+
+level_5.loadMonster([15*16,19*16,"./images/goomba.png","goomba",false,true,true])
+
+level_5.loadMonster([30*16,16*16,"./images/goomba.png","goomba",false,true,true])

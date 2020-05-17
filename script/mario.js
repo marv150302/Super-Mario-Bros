@@ -10,7 +10,7 @@ var Mario = function (ctx) {
 
   this.x = 20;
 
-  this.oldy = 245
+  this.oldy = 0
 
   this.oldx = 0;
 
@@ -36,7 +36,7 @@ var Mario = function (ctx) {
 
   this.vulnerability_time = 3000;
 
-  this.jump_height = 40;
+  this.jump_height = 35;
 
   this.isJumping = false;
 
@@ -253,7 +253,7 @@ Mario.prototype.update = function (dt,move) {
 
     this.state = "jumping"
 
-  }else if(!this.key[39] && !this.key[37] && !this.key[90] && !this.key[40]){
+  }else if(!this.key[39] && !this.key[37] && !this.key[90] && !this.key[40] && !this.key[32]){
 
     this.state = "idle"
 
@@ -332,9 +332,17 @@ Mario.prototype.pushFireball = function () {
 
   this.fireBall.push({
 
-    x : this.face=="Right" ? this.x+20 : this.x-20,
+    x : this.face=="Right" ? this.x+16 : this.x-16,
 
     y : this.y + 16,
+
+    max_height : this.y,
+
+    vy : +50,
+
+    vx : this.face=="Right" ? 80 : -80,
+
+    ground : 19*16,
 
     width : 10,
 
@@ -384,7 +392,7 @@ Mario.prototype.updateFireBall = function (dt) {
 
   this.fireBall.forEach((item, i,array) => {
 
-    this.fireBall[i].framecount++;
+    /*this.fireBall[i].framecount++;
 
     if (this.fireBall[i].play) {
 
@@ -398,11 +406,31 @@ Mario.prototype.updateFireBall = function (dt) {
 
       }
 
+    }*/
+
+    //this.fireBall[i].y+=this.fireBall[i].cycleloop[this.fireBall[i].index]
+
+    //this.fireBall[i].dir ? this.fireBall[i].x+= 100*dt : this.fireBall[i].x-= 100*dt;
+
+
+
+    this.fireBall[i].x += this.fireBall[i].vx*dt
+
+    this.fireBall[i].y += item.vy*dt
+
+    if (item.y <= item.max_height) {
+
+      this.fireBall[i].vy = -this.fireBall[i].vy
+
     }
 
-    this.fireBall[i].y+=this.fireBall[i].cycleloop[this.fireBall[i].index]
+    if (item.y >= item.ground) {
 
-    this.fireBall[i].dir ? this.fireBall[i].x+= 100*dt : this.fireBall[i].x-= 100*dt;
+      this.fireBall[i].max_height = item.y - 16
+
+      this.fireBall[i].vy = -this.fireBall[i].vy
+
+    }
 
   });
 

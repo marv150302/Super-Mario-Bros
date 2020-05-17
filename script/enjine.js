@@ -46,9 +46,9 @@ function loadMap() {
 
   loadEntity();
 
-  mario.y = levels[WORLD][AREA].mario_position.y;
-
   mario.draw()
+
+  mario.y = levels[WORLD][AREA].mario_position.y;
 
   return true;
 

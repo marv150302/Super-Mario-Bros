@@ -1,61 +1,4 @@
-Mario.prototype.input = function (dt,move) {
 
-  if (this.key[39] && !this.key[90] && this.pressKey) {//right input
-
-    this.vx+= 10*dt
-
-    this.face = "Right"
-
-    mario.x + mario.width>=camera.axis && !this.complete_level ? animate(dt) : false//animate only if mario is at the middle of the screen
-  }
-  if (this.key[40] && this.pressKey && mario.size!="small") {
-
-    this.state = "crouch"
-
-    this.height = 16
-
-    this.width = 16
-
-  }
-  if (this.key[38] && this.pressKey) {//jump input
-
-
-    this.state = "jumping"
-
-    if (!this.isJumping) {
-
-      this.vy -= this.jump_height
-
-      this.isJumping = true
-
-      canvas.game.audio.mario_jump.play();
-
-    }
-  }
-  if (this.key[37] && !this.key[90] && this.pressKey) {//left input
-
-    this.vx-= 10*dt
-
-    this.face = "Left"
-
-  }
-  if (this.key[90] && !this.key[39] && this.pressKey) {//running
-
-    this.state = "moving"
-
-    this.face=="Right" ? this.vx+= 30*dt : this.vx-= 30*dt//if
-
-    if (this.face=="Right" && mario.complete_level) {
-
-      this.vx += 60*dt
-
-    }
-
-    this.face=="Right" ? camera.speed=200 : null
-
-    mario.x + mario.width>=camera.axis && !this.complete_level ? animate(dt) : false
-  }
-}
 var start = 0;
 
 var elapsed = 0
@@ -89,11 +32,17 @@ document.addEventListener("keydown",function (e) {
 
   if (e.keyCode==32 && mario.power=="Fire") {
 
+
+
     if (!pressed) {
 
       pressed = true
 
       if (lastChar == e.keyCode) {
+
+        mario.state = "throwingFire"
+
+        canvas.game.audio.fireBall_sound.play()
 
         mario.pushFireball();
 
@@ -111,6 +60,7 @@ document.addEventListener("keydown",function (e) {
   if (mario.pressKey) {
 
     mario.key[e.keyCode]=true;
+
   }
   if (e.keyCode==13) {
 

@@ -114,7 +114,9 @@ var canvas = {
 
       cube_bump_sound : new Audio("./sound/bump.wav"),
 
-      pause_sound : new Audio("./sound/pause_menu.mp3")
+      pause_sound : new Audio("./sound/pause_menu.mp3"),
+
+      fireBall_sound : new Audio("./sound/fireBall.mov")
 
 
 

@@ -24,7 +24,7 @@ levels[1][4] = {
 
   winning_pole : {
 
-    x : 500*16,
+    x : 220*16,
 
     y : 3*16,
 
@@ -111,13 +111,23 @@ level_4.loadLava([6,34*16,18*16,"./images/lava2.png",4])
 
 level_4.loadGround([70,40*16,15*16,"./images/greyCube.png",3]);
 
-level_4.loadGround([95,40*16,18*16,"./images/greyCube.png",6]);
+level_4.loadGround([300,40*16,18*16,"./images/greyCube.png",6]);
 
 level_4.loadGround([4,120*16,15*16,"./images/greyCube.png",3]);
 
 level_4.loadGround([5,130*16,15*16,"./images/greyCube.png",3]);
 
 level_4.loadGround([15,135*16,15*16,"./images/castleGround.png",1]);
+
+level_4.loadStair([220*16,17*16,1,"./images/brown-stair.png"])
+
+level_4.loadStair([210*16,17*16,4,"./images/brown-stair.png"])
+
+level_4.loadStair([211*16,16*16,3,"./images/brown-stair.png"])
+
+level_4.loadStair([212*16,15*16,2,"./images/brown-stair.png"])
+
+
 
 level_4.loadLava([15,135*16,20*16,"./images/lava.png",1])
 
@@ -127,7 +137,8 @@ level_4.loadGround([50,150*16,15*16,"./images/greyCube.png",7]);
 
 level_4.loadMonster([150*16,13*16,"./images/bowser.png","bowser",false,true,true],)
 
-level_4.loadCube([10*16,10*16,true,1,"./images/yellowCube.png",1]);
+level_4.loadCube([7*16,10*16,true,1,"./images/yellowCube.png",1]);
+
 
 
 
