@@ -116,7 +116,26 @@ Mario.prototype.draw = function () {
 
   this.ctx.imageSmoothingEnabled = false
 
+  var dArr = [-1,-1, 0,-1, 1,-1, -1,0, 1,0, -1,1, 0,1, 1,1]; // offset array
+
+  var s = 0.5;  // thickness scale
+
+  for(let i = 0; i < dArr.length; i += 2){
+
+  this.ctx.drawImage(resources.get(this.url), this.x + dArr[i]*s, this.y + dArr[i+1]*s);
+
+  // fill with color
+  this.ctx.globalCompositeOperation = "source-in";
+
+  this.ctx.fillStyle = "white";
+
+  this.ctx.fillRect(0,0,canvas.width, canvas.height);
+
+  // draw original image in normal mode
+  this.ctx.globalCompositeOperation = "source-over";
+
   this.ctx.drawImage(resources.get(this.url),this.x,this.y);//draw mario
+  }
 
   this.fireBall.forEach((item, i) => {// we need to draw all the fireballs
 

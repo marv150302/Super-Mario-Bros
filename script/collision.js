@@ -804,11 +804,7 @@ function collision(dt) {
 
   poleCollision();//mario collision with pole
 
-  //
-
   //mario collisions with objects on the map
-
-  //
 
   fireBallCollision()//mario fireball can collide with entity such as tube or cube
 
