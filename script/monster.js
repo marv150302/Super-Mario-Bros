@@ -218,7 +218,7 @@ Monster.prototype.update = function (dt,speed) {
 
       }
 
-      monster.dead_animation(i)
+
 
       //this.entity[i].old_y = this.entity[i].y;
 
@@ -310,6 +310,7 @@ Monster.prototype.update = function (dt,speed) {
     }
 
   }
+  monster.dead_animation()
 
 }
 
@@ -440,55 +441,57 @@ Monster.prototype.boss_animation = function (i) {
   }
 }
 
-Monster.prototype.dead_animation = function (i) {
+Monster.prototype.dead_animation = function () {
 
 
-if (this.entity[i].dead && this.entity[i].type!="flower_monster" &&  this.entity[i].type!="flower_monster2") {
+  for (var i = 0,length = this.entity.length; i < length; i++) {
+
+    if (this.entity[i].dead && this.entity[i].type!="flower_monster" &&  this.entity[i].type!="flower_monster2") {
+
+      //the score animation when you jump on a monster
+      if (!this.entity[i].score_animation) {
+
+        mario.score += 200
+
+        map.addScore(this.entity[i].x, this.entity[i].y);
+
+        this.entity[i].score_animation = true
+
+      }
 
 
-  //the score animation when you jump on a monster
-  if (!this.entity[i].score_animation) {
+      let type = this.entity[i].type;
 
-    mario.score += 200
+      this.entity[i].url = type=="goomba" ? "./images/deadGoomba.png" : "./images/koopaShield.png"
 
-    map.addScore(this.entity[i].x, this.entity[i].y);
+      this.entity[i].dead_animation.framecount++
 
-    this.entity[i].score_animation = true
+      if (this.entity[i].dead_animation.framecount>=100) {
 
-  }
+        this.entity[i].dead_animation.framecount=0
 
+        this.entity[i].dead_animation._index++;
 
-  let type = this.entity[i].type;
+        if (this.entity[i].dead_animation._index>=this.entity[i].dead_animation.dye.length) {
 
-  this.entity[i].url = type=="goomba" ? "./images/deadGoomba.png" : "./images/koopaShield.png"
+          this.entity[i].dead_animation._index=0;
 
-  this.entity[i].dead_animation.framecount++
+        }
 
-  if (this.entity[i].dead_animation.framecount>=100) {
+      }
 
-    this.entity[i].dead_animation.framecount=0
+      if (this.entity[i].dead_animation.dye[this.entity[i].dead_animation._index]) {
 
-    this.entity[i].dead_animation._index++;
+        if (type!="koopa") {
 
-    if (this.entity[i].dead_animation._index>=this.entity[i].dead_animation.dye.length) {
+          this.entity.splice(i,1)
 
-      this.entity[i].dead_animation._index=0;
+        }
 
-    }
+        return true
+        }
 
-  }
-
-  if (this.entity[i].dead_animation.dye[this.entity[i].dead_animation._index]) {
-
-    if (type!="koopa") {
-
-      this.entity.splice(i,1)
-
-    }
-
-    return true
-    }
-
+      }
   }
 
   return false;
