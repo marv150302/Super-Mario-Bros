@@ -40,7 +40,9 @@ var Mario = function (ctx) {
 
   this.isJumping = false;
 
-  this.gravity = 17;
+  this.gravity = 15;
+
+  this.old_gravity = this.gravity;
 
   this.coin = 0;
 
@@ -116,7 +118,7 @@ Mario.prototype.draw = function () {
 
   this.ctx.imageSmoothingEnabled = false
 
-  var dArr = [-1,-1, 0,-1, 1,-1, -1,0, 1,0, -1,1, 0,1, 1,1]; // offset array
+  /*var dArr = [-1,-1, 0,-1, 1,-1, -1,0, 1,0, -1,1, 0,1, 1,1]; // offset array
 
   var s = 0.5;  // thickness scale
 
@@ -134,8 +136,10 @@ Mario.prototype.draw = function () {
   // draw original image in normal mode
   this.ctx.globalCompositeOperation = "source-over";
 
+
+}*/
+
   this.ctx.drawImage(resources.get(this.url),this.x,this.y);//draw mario
-  }
 
   this.fireBall.forEach((item, i) => {// we need to draw all the fireballs
 
@@ -158,8 +162,7 @@ Mario.prototype.setForm = function (size,power,height) {
 Mario.prototype.update = function (dt,move) {
 
   //console.log(Math.round((this.vx + Number.EPSILON) * 100) / 100);
-
-
+  
   if (dt < 4) {
 
     setCookie("mario top score",this.top_score,5)

@@ -124,7 +124,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
     //no_static means that it is not a static item so it has to be spwaned from the start of the game (like the coins)
 
-    switch (id) {//the id of the item
+    switch (1) {//the id of the item
 
       case 1: /*spwan fireFlower*/
 
@@ -162,7 +162,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
       if (num_mushroom.length == 0) {//we need to push only one mushroom or it will be too much easy
 
-        item.push(x,y-16,"./images/mushroom.png","mushroom")
+        item.push(x,y-16,"./images/mushroom.png","mushroom","no_static")
 
       }else{
 

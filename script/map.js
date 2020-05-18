@@ -397,7 +397,7 @@ Map.prototype.nextLevel = function () {
 
   mario.x = 0;
 
-  mario.gravity = 17
+  mario.gravity = mario.old_gravity
 
   mario.state = "idle";
 

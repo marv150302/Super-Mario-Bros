@@ -13,8 +13,6 @@ var Item = function (ctx) {
 
 Item.prototype.push = function (x,y,url,type,static) {
 
-  this.entity = []
-
   this.entity.push({
 
     x: Math.round(x),
@@ -51,6 +49,9 @@ Item.prototype.push = function (x,y,url,type,static) {
 
 }
 Item.prototype.load = function () {
+
+  this.entity = []
+  
   for (var i = 0,length=levels[WORLD][AREA].static_coin.length; i < length; i++) {
 
     let x = levels[WORLD][AREA].static_coin[i][0];
