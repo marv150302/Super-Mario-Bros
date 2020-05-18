@@ -124,7 +124,7 @@ Cube.prototype.spawn = function (id,x,y,_index) {
 
     //no_static means that it is not a static item so it has to be spwaned from the start of the game (like the coins)
 
-    switch (1) {//the id of the item
+    switch (id) {//the id of the item
 
       case 1: /*spwan fireFlower*/
 
